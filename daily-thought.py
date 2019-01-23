@@ -16,10 +16,10 @@ if __name__ == '__main__':
         help='specify the date of the report in UTC format')
     args.add_argument(
         '-o',
-        '--out-dir',
+        '--work-dir',
         metavar='PATH',
         default='./',
-        help='the output directory')
+        help='the working directory where logs are kept')
 
     opts = args.parse_args()
 
@@ -34,7 +34,7 @@ if __name__ == '__main__':
             opts.date) if opts.date else datetime.datetime.now()
 
     log_file_path = f'{log_date_utc.date()}.md'
-    log_file_path = pathlib.Path(opts.out_dir, log_file_path)
+    log_file_path = pathlib.Path(opts.work_dir, log_file_path)
 
     log_file_path.parent.mkdir(parents=True, exist_ok=True)
 
